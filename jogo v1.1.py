@@ -20,7 +20,6 @@ pontos = 0
 
 jogo[44][0] = 'o'
 
-print('\033[35m')
 for c in jogo:
     if c[1] != POSIÇÃO_ANTIGA:
         print()
@@ -30,7 +29,6 @@ for c in jogo:
     if c[0] == 'x':
         print('\033[35m', end='')
     print(c[0], end='')
-print('\033[m')
 
 
 POSIÇÃO_ATUAL = ['\033[34mo\033[m', 1, 1]
@@ -76,7 +74,6 @@ while True:
         if c[1] == POSIÇÃO_ATUAL[1] and c[2] == POSIÇÃO_ATUAL[2]:
             c[0] = 'o'
 
-    print('\033[35m')
     for c in jogo:
         if c[1] != POSIÇÃO_ANTIGA:
             print()
@@ -86,4 +83,3 @@ while True:
         if c[0] == 'x':
             print('\033[35m', end='')
         print(c[0], end='')
-    print('\033[m')
