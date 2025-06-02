@@ -12,15 +12,15 @@ for c in jogo:
         c[0] = premio[0]
 maximo = ['o', 5, 11]
 minimo = ['o', 1, 1]
-velho = 1
+POSIÇÃO_ANTIGA = 0
 pontos = 0
-posicao = ['o', 1, 1]
+POSIÇÃO_ATUAL = ['o', 1, 1]
 jogo[44][0] = 'o'
 
 for c in jogo:
-    if c[1] != velho:
-        print()
-        velho = c[1]
+    if c[1] != POSIÇÃO_ANTIGA:
+        print('OI')
+        POSIÇÃO_ANTIGA = c[1]
     print(c[0], end='')
 print()
 
@@ -28,7 +28,7 @@ print()
 
 
 while True:
-    if posicao[1] == premio[1] and posicao[2] == premio[2]:
+    if POSIÇÃO_ATUAL[1] == premio[1] and POSIÇÃO_ATUAL[2] == premio[2]:
         pontos +=1
     for c in jogo:
         if premio[1] == c[1] and premio[2] == c[2]:
@@ -40,33 +40,33 @@ while True:
     jogada = input('\nPontuação: {} Jogada: '.format(pontos)).upper()
 
 
-    if jogada == 'W' and posicao[1]+1 <= maximo[1]:
-        posicao[1] += 1
+    if jogada == 'W' and POSIÇÃO_ATUAL[1]+1 <= maximo[1]:
+        POSIÇÃO_ATUAL[1] += 1
         for c in jogo:
             if c[0] == 'o':
                 c[0] = 'x'
-    if jogada == 'S' and posicao[1]-1 >= minimo[1]:
-        posicao[1] -= 1
+    if jogada == 'S' and POSIÇÃO_ATUAL[1]-1 >= minimo[1]:
+        POSIÇÃO_ATUAL[1] -= 1
         for c in jogo:
             if c[0] == 'o':
                 c[0] = 'x'
-    if jogada == 'D' and posicao[2]+1 <= maximo[2]:
-        posicao[2] += 1
+    if jogada == 'D' and POSIÇÃO_ATUAL[2]+1 <= maximo[2]:
+        POSIÇÃO_ATUAL[2] += 1
         for c in jogo:
             if c[0] == 'o':
                 c[0] = 'x'
-    if jogada == 'A' and posicao[2]-1 >= minimo[2]:
-        posicao[2] -= 1
+    if jogada == 'A' and POSIÇÃO_ATUAL[2]-1 >= minimo[2]:
+        POSIÇÃO_ATUAL[2] -= 1
         for c in jogo:
             if c[0] == 'o':
                 c[0] = 'x'
 
     for c in jogo:
-        if c[1] == posicao[1] and c[2] == posicao[2]:
+        if c[1] == POSIÇÃO_ATUAL[1] and c[2] == POSIÇÃO_ATUAL[2]:
             c[0] = 'o'
 
     for c in jogo:
-        if c[1] != velho:
+        if c[1] != POSIÇÃO_ANTIGA:
             print()
-            velho = c[1]
+            POSIÇÃO_ANTIGA = c[1]
         print(c[0], end='')
