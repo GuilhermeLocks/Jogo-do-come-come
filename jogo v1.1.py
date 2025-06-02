@@ -30,8 +30,15 @@ print()
 while True:
     if posicao[1] == premio[1] and posicao[2] == premio[2]:
         pontos +=1
+    for c in jogo:
+        if premio[1] == c[1] and premio[2] == c[2]:
+            if c[0] == 'x':
+                premio = ['*', random.randint(1, 5), random.randint(1, 11)]
+                for c in jogo:
+                    if premio[1] == c[1] and premio[2] == c[2]:
+                        c[0] = premio[0]
     jogada = input('\nPontuação: {} Jogada: '.format(pontos)).upper()
-    print(premio)
+
 
     if jogada == 'W' and posicao[1]+1 <= maximo[1]:
         posicao[1] += 1
