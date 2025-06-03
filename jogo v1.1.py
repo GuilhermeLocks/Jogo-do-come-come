@@ -34,17 +34,8 @@ for c in jogo:
 POSIÇÃO_ATUAL = ['\033[34mo\033[m', 1, 1]
 while True:
 
-    if POSIÇÃO_ATUAL[1] == premio[1] and POSIÇÃO_ATUAL[2] == premio[2]:
-        pontos +=1
 
-    print('\033[34m')
-    for c in jogo:
-        if premio[1] == c[1] and premio[2] == c[2]:
-            if c[0] == 'x':
-                premio = ['\033[34m*\033[35m', random.randint(1, 5), random.randint(1, 11)]
-                for c in jogo:
-                    if premio[1] == c[1] and premio[2] == c[2]:
-                        c[0] = premio[0]
+
     jogada = input('\nPontuação: {} Jogada: '.format(pontos)).upper()
 
 
@@ -70,6 +61,18 @@ while True:
                 c[0] = 'x'
     print('\033[m')
 
+    if POSIÇÃO_ATUAL[1] == premio[1] and POSIÇÃO_ATUAL[2] == premio[2]:
+        pontos +=1
+    print('\033[34m')
+    for c in jogo:
+        if premio[1] == c[1] and premio[2] == c[2]:
+            if c[0] == 'x':
+                premio = ['\033[34m*\033[35m', random.randint(1, 5), random.randint(1, 11)]
+                for c in jogo:
+                    if premio[1] == c[1] and premio[2] == c[2]:
+                        c[0] = premio[0]
+
+
     for c in jogo:
         if c[1] == POSIÇÃO_ATUAL[1] and c[2] == POSIÇÃO_ATUAL[2]:
             c[0] = 'o'
@@ -83,3 +86,5 @@ while True:
         if c[0] == 'x':
             print('\033[35m', end='')
         print(c[0], end='')
+
+
