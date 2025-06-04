@@ -20,25 +20,36 @@ pontos = 0
 
 jogo[44][0] = 'o'
 
-for c in jogo:
-    if c[1] != POSIÇÃO_ANTIGA:
-        print()
-        POSIÇÃO_ANTIGA = c[1]
-    if c[0] == 'o':
-        print('\033[34m', end='')
-    if c[0] == 'x':
-        print('\033[35m', end='')
-    print(c[0], end='')
 
 
-POSIÇÃO_ATUAL = ['\033[34mo\033[m', 1, 1]
+POSIÇÃO_ATUAL = ['o', 1, 1]
 while True:
+    print('\033[m')
+    if POSIÇÃO_ATUAL[1] == premio[1] and POSIÇÃO_ATUAL[2] == premio[2]:
+        pontos += 1
+    print('\033[34m')
+    for c in jogo:
+        if premio[1] == c[1] and premio[2] == c[2]:
+            if c[0] == 'x':
+                premio = ['\033[34m*\033[35m', random.randint(1, 5), random.randint(1, 11)]
+                for c in jogo:
+                    if premio[1] == c[1] and premio[2] == c[2]:
+                        c[0] = premio[0]
+    for c in jogo:
+        if c[1] == POSIÇÃO_ATUAL[1] and c[2] == POSIÇÃO_ATUAL[2]:
+            c[0] = 'o'
+    for c in jogo:
+        if c[1] != POSIÇÃO_ANTIGA:
+            print()
+            POSIÇÃO_ANTIGA = c[1]
+        if c[0] == 'o':
+            print('\033[34m', end='')
+        if c[0] == 'x':
+            print('\033[35m', end='')
+        print(c[0], end='')
+    print('')
 
-
-
-    jogada = input('\nPontuação: {} Jogada: '.format(pontos)).upper()
-
-
+    jogada = input('\n\033[34mMoedas: {} Jogada: \033[m'.format(pontos)).upper()
     if jogada == 'W' and POSIÇÃO_ATUAL[1]+1 <= maximo[1]:
         POSIÇÃO_ATUAL[1] += 1
         for c in jogo:
@@ -59,32 +70,7 @@ while True:
         for c in jogo:
             if c[0] == 'o':
                 c[0] = 'x'
-    print('\033[m')
-
-    if POSIÇÃO_ATUAL[1] == premio[1] and POSIÇÃO_ATUAL[2] == premio[2]:
-        pontos +=1
-    print('\033[34m')
-    for c in jogo:
-        if premio[1] == c[1] and premio[2] == c[2]:
-            if c[0] == 'x':
-                premio = ['\033[34m*\033[35m', random.randint(1, 5), random.randint(1, 11)]
-                for c in jogo:
-                    if premio[1] == c[1] and premio[2] == c[2]:
-                        c[0] = premio[0]
 
 
-    for c in jogo:
-        if c[1] == POSIÇÃO_ATUAL[1] and c[2] == POSIÇÃO_ATUAL[2]:
-            c[0] = 'o'
-
-    for c in jogo:
-        if c[1] != POSIÇÃO_ANTIGA:
-            print()
-            POSIÇÃO_ANTIGA = c[1]
-        if c[0] == 'o':
-            print('\033[34m', end='')
-        if c[0] == 'x':
-            print('\033[35m', end='')
-        print(c[0], end='')
 
 
