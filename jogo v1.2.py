@@ -1,5 +1,4 @@
 import random
-
 largura = 5
 altura = 3
 fundo = 'x'
@@ -12,25 +11,21 @@ for c in range(altura, 0, -1):
         parte.append(v)
         jogo.append(parte[:])
         parte.clear()
-
 premio = ['\033[34m*\033[35m', random.randint(1, altura), random.randint(1, largura)]
 print(premio)
 for c in jogo:
     if premio[1] == c[1] and premio[2] == c[2]:
         c[0] = premio[0]
-maximo = ['x', largura, altura]
+maximo = ['x', altura, largura]
 minimo = ['x', 1, 1]
 POSIÇÃO_ANTIGA = 0
 pontos = 0
-
 jogo[largura*(altura-1)][0] = 'o'
 POSIÇÃO_ATUAL = ['x', 1, 1]
-
-while True:
+while pontos != 10:
     print('\033[m')
     if POSIÇÃO_ATUAL[1] == premio[1] and POSIÇÃO_ATUAL[2] == premio[2]:
         pontos += 1
-
     print('\033[34m')
     for c in jogo:
         if premio[1] == c[1] and premio[2] == c[2]:
@@ -53,7 +48,6 @@ while True:
             print('\033[35m', end='')
         print(c[0], end='')
     print('')
-
     jogada = input('\n\033[34mMoedas: {} Jogada: \033[m'.format(pontos)).upper()
     if jogada == 'W' and POSIÇÃO_ATUAL[1]+1 <= maximo[1]:
         POSIÇÃO_ATUAL[1] += 1
@@ -75,7 +69,3 @@ while True:
         for c in jogo:
             if c[0] == 'o':
                 c[0] = 'x'
-
-
-
-
