@@ -1,11 +1,12 @@
-tabuleiro = [['x', 3, 1], ['x', 3, 2], ['x', 3, 3],
-             ['x', 2, 1], ['x', 2, 2], ['x', 2, 3],
-             ['x', 1, 1], ['x', 1, 2], ['x', 1, 3],]
-velho = 3
+tabuleiro = []
+posicao = []
+for c in range(1, 9):
+    for v in range(1, 9):
+        posicao.append('x')
+        posicao.append(c)
+        posicao.append(v)
+        tabuleiro.append(posicao[:])
+        posicao.clear()
 for c in tabuleiro:
-    if velho < c[1]:
-        print('\n')
-    velho = c[1]
-    print(c, end='')
-    print('velho = ', velho)
+    print(c)
 
