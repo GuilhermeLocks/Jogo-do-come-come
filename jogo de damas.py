@@ -1,12 +1,9 @@
-tabuleiro = []
-posicao = []
-for c in range(1, 9):
-    for v in range(1, 9):
-        posicao.append('x')
-        posicao.append(c)
-        posicao.append(v)
-        tabuleiro.append(posicao[:])
-        posicao.clear()
-for c in tabuleiro:
-    print(c)
+import emoji
 
+# Converter texto para emoji
+texto_com_emoji = emoji.emojize("Python is :thumbs_up:")
+print(texto_com_emoji)  # Saída: Python is 👍
+
+# Exibir emoji diretamente
+print(emoji.emojize(":heart:"))  # Saída: ❤️
+help(emoji)
