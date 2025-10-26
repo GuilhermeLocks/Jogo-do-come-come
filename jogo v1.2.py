@@ -1,6 +1,6 @@
 import random
-largura = 5
-altura = 3
+largura = 10
+altura = 5
 fundo = 'x'
 jogo = list()
 parte = list()
