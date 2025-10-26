@@ -1,40 +1,47 @@
-import pygame
-from pygame.locals import *
-from sys import exit
-pygame.init()
-
-altura  = 480
-largura = 640
-moeda = 0
-valor = 1
-tela = pygame.display.set_mode((largura, altura))
-pygame.display.set_caption('Jogo Clicker')
-
+lista ={
+11 : 'x',
+12 : 'o',
+13 : 'x',
+21 : 'x',
+22 : 'x',
+23 : 'x',
+31 : 'x',
+32 : 'x',
+33 : 'x',
+}
+jogada_antiga = jogada_nova =12
+print('''
+{}{}{}
+{}{}{}
+{}{}{}'''.format(lista[31], lista[32], lista[33], lista[21], lista[22], lista[23], lista[11], lista[12],
+                     lista[13], ))
 while True:
-    for event in pygame.event.get():
-        if event.type ==  QUIT:
-            pygame.quit()
-            exit()
-    pygame.draw.rect(tela, (0,255,0), (200, 300, 40, 50))
-    pygame.display.update()
+    joga = input('Jogada: ')
+    if joga == 'a' and jogada_antiga - 1 != 10 and jogada_antiga - 1 != 20 and jogada_antiga - 1 != 30:
+        if jogada_antiga - 1 >= 11:
+            jogada_antiga -= 1
+        elif jogada_antiga - 1 >= 21:
+            jogada_antiga -= 1
+        elif jogada_antiga - 1 >= 31:
+            jogada_antiga -= 1
+    if joga == 'd' and jogada_antiga + 1 != 14 and jogada_antiga + 1 != 24 and jogada_antiga + 1 != 34:
+        if jogada_antiga +1 <= 13:
+            jogada_antiga += 1
+        elif jogada_antiga +1 <= 23:
+            jogada_antiga += 1
+        elif jogada_antiga +1 <= 33:
+            jogada_antiga += 1
+    if joga == 's':
+        jogada_antiga -= 10
+    if joga == 'w':
+        jogada_antiga += 10
 
-    acao = input('{}'.format(moeda)).upper()
-
-    if acao == '':
-        moeda += valor
-
-    if acao == 'L':
-        compra = input('''
-    [1] +2 moeda=10
-    [2] +5 moeda=1000
-    [3] s para sair''')
-
-    if compra == '1' and moeda >= 10:
-        moeda -= 10
-        valor += 1
-        compra = ''
-
-    if compra == '2' and moeda >= 1000:
-        moeda -= 1000
-        valor += 5
-        compra = ''
+    for c in lista:
+        lista[c] = 'x'
+    for c in lista:
+        if c == jogada_antiga:
+            lista[c] = 'o'
+    print('''
+{}{}{}
+{}{}{}
+{}{}{}'''.format(lista[31], lista[32], lista[33], lista[21], lista[22], lista[23], lista[11], lista[12], lista[13], ))
