@@ -4,6 +4,7 @@ altura = 3
 fundo = 'x'
 jogo = list()
 parte = list()
+objetivo = '*'
 
 for c in range(altura, 0, -1):
     for v in range(1, largura+1):
@@ -12,7 +13,8 @@ for c in range(altura, 0, -1):
         parte.append(v)
         jogo.append(parte[:])
         parte.clear()
-premio = ['\033[34m*\033[35m', random.randint(1, altura), random.randint(1, largura)]
+
+premio = [f'\033[34m{objetivo}\033[35m', random.randint(1, altura), random.randint(1, largura)]
 
 for c in jogo:
     if premio[1] == c[1] and premio[2] == c[2]:
@@ -34,7 +36,7 @@ while pontos != 10:
     for c in jogo:
         if premio[1] == c[1] and premio[2] == c[2]:
             if c[0] == 'x':
-                premio = ['\033[34m*\033[35m', random.randint(1, altura), random.randint(1, largura)]
+                premio = [f'\033[34m{objetivo}\033[35m', random.randint(1, altura), random.randint(1, largura)]
                 print(premio)
                 for c in jogo:
                     if premio[1] == c[1] and premio[2] == c[2]:
