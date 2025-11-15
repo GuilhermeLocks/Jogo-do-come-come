@@ -2,9 +2,10 @@ import random
 largura = 8
 altura = 3
 fundo = 'x'
+objetivo = '9'
+jogador = '6'
 jogo = list()
 parte = list()
-objetivo = '*'
 
 for c in range(altura, 0, -1):
     for v in range(1, largura+1):
@@ -24,7 +25,7 @@ maximo = ['x', altura, largura]
 minimo = ['x', 1, 1]
 POSIÇÃO_ANTIGA = 0
 pontos = 0
-jogo[largura*(altura-1)][0] = 'o'
+jogo[largura*(altura-1)][0] = jogador
 POSIÇÃO_ATUAL = ['x', 1, 1]
 
 while pontos != 10:
@@ -37,19 +38,18 @@ while pontos != 10:
         if premio[1] == c[1] and premio[2] == c[2]:
             if c[0] == 'x':
                 premio = [f'\033[34m{objetivo}\033[35m', random.randint(1, altura), random.randint(1, largura)]
-                print(premio)
                 for c in jogo:
                     if premio[1] == c[1] and premio[2] == c[2]:
                         c[0] = premio[0]
     for c in jogo:
         if c[1] == POSIÇÃO_ATUAL[1] and c[2] == POSIÇÃO_ATUAL[2]:
-            c[0] = 'o'
+            c[0] = jogador
 
     for c in jogo:
         if c[1] != POSIÇÃO_ANTIGA:
             print()
             POSIÇÃO_ANTIGA = c[1]
-        if c[0] == 'o':
+        if c[0] == jogador:
             print('\033[34m', end='')
         if c[0] == 'x':
             print('\033[35m', end='')
@@ -62,23 +62,23 @@ while pontos != 10:
     if jogada == 'W' and POSIÇÃO_ATUAL[1]+1 <= maximo[1]:
         POSIÇÃO_ATUAL[1] += 1
         for c in jogo:
-            if c[0] == 'o':
+            if c[0] == jogador:
                 c[0] = 'x'
 
     if jogada == 'S' and POSIÇÃO_ATUAL[1]-1 >= minimo[1]:
         POSIÇÃO_ATUAL[1] -= 1
         for c in jogo:
-            if c[0] == 'o':
+            if c[0] == jogador:
                 c[0] = 'x'
 
     if jogada == 'D' and POSIÇÃO_ATUAL[2]+1 <= maximo[2]:
         POSIÇÃO_ATUAL[2] += 1
         for c in jogo:
-            if c[0] == 'o':
+            if c[0] == jogador:
                 c[0] = 'x'
 
     if jogada == 'A' and POSIÇÃO_ATUAL[2]-1 >= minimo[2]:
         POSIÇÃO_ATUAL[2] -= 1
         for c in jogo:
-            if c[0] == 'o':
+            if c[0] == jogador:
                 c[0] = 'x'
