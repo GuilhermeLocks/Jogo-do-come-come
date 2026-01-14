@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Clicker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            font-size: 24px;
+            padding: 15px 30px;
+            cursor: pointer;
+        }
+        #contador {
+            font-size: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Meu Clicker 🎮</h1>
+    <button onclick="clicar()">Clique aqui!</button>
+    <div id="contador">Cliques: 0</div>
+
+    <script>
+        function clicar() {
+            fetch("/click", {
+                method: "POST"
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("contador").innerText =
+                    "Cliques: " + data.cliques;
+            });
+        }
+    </script>
+
+</body>
+</html>
