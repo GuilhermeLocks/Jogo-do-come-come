@@ -1,9 +1,9 @@
 import random
 largura = 8
-altura = 3
+altura = 4
 fundo = 'x'
-objetivo = '9'
-jogador = '6'
+objetivo = '*'
+jogador = '!'
 jogo = list()
 parte = list()
 
