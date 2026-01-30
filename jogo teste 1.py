@@ -2,14 +2,14 @@ import random
 import os
 import msvcrt
 
-largura = 8
-altura = 10
+largura = 50
+altura = 11
 fundo = 'x'
 objetivo = '*'
 jogador = '!'
 jogo = list()
 parte = list()
-premio = [f'\033[34m{objetivo}\033[35m', random.randint(1, altura), random.randint(1, largura)]
+
 maximo = ['x', altura, largura]
 minimo = ['x', 1, 1]
 POSIÇÃO_ANTIGA = 0
@@ -26,9 +26,11 @@ for c in range(altura, 0, -1):
 
 jogo[largura*(altura-1)][0] = jogador
 
-for c in jogo:
-    if premio[1] == c[1] and premio[2] == c[2]:
-        c[0] = premio[0]
+for c in range(0, 1000):
+    premio = [f'\033[34m{objetivo}\033[35m', random.randint(1, altura), random.randint(1, largura)]
+    for c in jogo:
+        if premio[1] == c[1] and premio[2] == c[2]:
+            c[0] = premio[0]
 
 def mostrar_jogo(POSIÇÃO_ANTIGA):
     os.system('cls')
@@ -59,6 +61,7 @@ while pontos != 10:
                 for c in jogo:
                     if premio[1] == c[1] and premio[2] == c[2]:
                         c[0] = premio[0]
+
 
     for c in jogo:
         if c[1] == POSIÇÃO_ATUAL[1] and c[2] == POSIÇÃO_ATUAL[2]:
