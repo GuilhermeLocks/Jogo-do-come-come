@@ -3,7 +3,7 @@ import os
 import msvcrt
 
 largura = 8
-altura = 10
+altura = 4
 fundo = 'x'
 objetivo = '*'
 jogador = '!'

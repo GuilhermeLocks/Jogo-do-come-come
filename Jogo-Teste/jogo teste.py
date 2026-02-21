@@ -4,6 +4,16 @@ import os
 ouro = 0
 vezes = 1
 
+def mostrar_ouro():
+    os.system('cls')
+    print(ouro)
+
+def comprar(v, o):
+    global vezes
+    global ouro
+    vezes *= v
+    ouro -= o
+
 while True:
 
     if msvcrt.kbhit():  # Verifica se uma tecla foi pressionada
@@ -11,30 +21,23 @@ while True:
 
         if key == 'q':
             ouro += vezes
-            os.system('cls')
-            print(ouro)
+            mostrar_ouro()
 
         if key == '2' and ouro >= 20:
-            vezes *= 2
-            ouro -= 20
-            os.system('cls')
-            print(ouro)
+            comprar(2, 20)
+            mostrar_ouro()
 
         if key == '3' and ouro >= 30:
-            vezes *= 3
-            ouro -= 30
-            os.system('cls')
-            print(ouro)
+            comprar(3, 30)
+            mostrar_ouro()
 
         if key == '4' and ouro >= 40:
-            vezes *= 400
-            ouro -= 40
-            os.system('cls')
-            print(ouro)
+            comprar(4, 40)
+            mostrar_ouro()
 
         if key == '0':
             ouro = 0
-            os.system('cls')
-            print(ouro)
+            vezes = 0
+            mostrar_ouro()
 
 
