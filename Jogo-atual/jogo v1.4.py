@@ -16,26 +16,6 @@ minimo = ['x', 1, 1]
 POSIÇÃO_ANTIGA = 0
 pontos = 0
 POSIÇÃO_ATUAL = ['x', 1, 1]
-janela = tk.Tk()
-janela.title('Jogo-do-como-como-v1.4')
-janela.geometry('400x300')
-
-for c in range(altura, 0, -1):
-    for v in range(1, largura+1):
-        parte.append(fundo)
-        parte.append(c)
-        parte.append(v)
-        jogo.append(parte[:])
-        parte.clear()
-
-
-jogo[largura*(altura-1)][0] = jogador
-
-
-for c in jogo:
-    if premio[1] == c[1] and premio[2] == c[2]:
-        c[0] = premio[0]
-
 def mostrar_jogo(POSIÇÃO_ANTIGA):
     os.system('cls')
     for c in jogo:
@@ -51,9 +31,28 @@ def mostrar_jogo(POSIÇÃO_ANTIGA):
     print('')
     print(f'\033[35mPontos: {pontos}')
 
-tk.Button(janela, text='W').pack()
-tk.Label(janela, text='jogo', command=mostrar_jogo(POSIÇÃO_ANTIGA)).pack()
+janela = tk.Tk()
+janela.title('Jogo-do-como-como-v1.4')
+janela.geometry('400x300')
+# tk.Button(janela, text='W').pack()
+# tk.Button(janela, text='W').pack()
+tk.Label(janela, text='''***
+***
+***''').pack()
 janela.mainloop()
+
+for c in range(altura, 0, -1):
+    for v in range(1, largura+1):
+        parte.append(fundo)
+        parte.append(c)
+        parte.append(v)
+        jogo.append(parte[:])
+        parte.clear()
+jogo[largura*(altura-1)][0] = jogador
+for c in jogo:
+    if premio[1] == c[1] and premio[2] == c[2]:
+        c[0] = premio[0]
+
 while pontos != 10:
 
     '\033[m'
@@ -106,6 +105,10 @@ while pontos != 10:
                     if c[0] == jogador:
                         c[0] = 'x'
                 break
+
+
+
+
 
 
 
