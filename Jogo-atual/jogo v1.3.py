@@ -26,11 +26,8 @@ for c in range(altura, 0, -1):
 
 jogo[largura*(altura-1)][0] = jogador
 
-for c in jogo:
-    if premio[1] == c[1] and premio[2] == c[2]:
-        c[0] = premio[0]
-
-def mostrar_jogo(POSIÇÃO_ANTIGA):
+def mostrar_jogo():
+    global POSIÇÃO_ANTIGA
     os.system('cls')
     for c in jogo:
         if c[1] != POSIÇÃO_ANTIGA:
@@ -45,27 +42,7 @@ def mostrar_jogo(POSIÇÃO_ANTIGA):
     print('')
     print(f'\033[35mPontos: {pontos}')
 
-while pontos != 10:
-
-    '\033[m'
-    if POSIÇÃO_ATUAL[1] == premio[1] and POSIÇÃO_ATUAL[2] == premio[2]:
-        pontos += 1
-    '\033[34m'
-
-    for c in jogo:
-        if premio[1] == c[1] and premio[2] == c[2]:
-            if c[0] == 'x':
-                premio = [f'\033[34m{objetivo}\033[35m', random.randint(1, altura), random.randint(1, largura)]
-                for c in jogo:
-                    if premio[1] == c[1] and premio[2] == c[2]:
-                        c[0] = premio[0]
-
-    for c in jogo:
-        if c[1] == POSIÇÃO_ATUAL[1] and c[2] == POSIÇÃO_ATUAL[2]:
-            c[0] = jogador
-
-    mostrar_jogo(POSIÇÃO_ANTIGA)
-
+def recebe_jogada():
     while True:
         if msvcrt.kbhit():  # Verifica se uma tecla foi pressionada
             key = msvcrt.getch().decode('utf-8')  # Lê a tecla e decodifica
@@ -98,3 +75,34 @@ while pontos != 10:
                         c[0] = 'x'
                 break
 
+def marca_ponto():
+    global pontos
+    if POSIÇÃO_ATUAL[1] == premio[1] and POSIÇÃO_ATUAL[2] == premio[2]:
+        pontos += 1
+
+def cria_premio():
+    global premio
+    for c in jogo:
+        if premio[1] == c[1] and premio[2] == c[2]:
+            if c[0] == 'x':
+                premio = [f'\033[34m{objetivo}\033[35m', random.randint(1, altura), random.randint(1, largura)]
+                for c in jogo:
+                    if premio[1] == c[1] and premio[2] == c[2]:
+                        c[0] = premio[0]
+
+def atualiza_posicao_jogador():
+    for c in jogo:
+        if c[1] == POSIÇÃO_ATUAL[1] and c[2] == POSIÇÃO_ATUAL[2]:
+            c[0] = jogador
+
+while pontos != 10:
+
+    cria_premio()
+
+    marca_ponto()
+
+    atualiza_posicao_jogador()
+
+    mostrar_jogo()
+
+    recebe_jogada()

@@ -16,6 +16,7 @@ minimo = ['x', 1, 1]
 POSIÇÃO_ANTIGA = 0
 pontos = 0
 POSIÇÃO_ATUAL = ['x', 1, 1]
+
 def mostrar_jogo(POSIÇÃO_ANTIGA):
     os.system('cls')
     for c in jogo:
